@@ -1,0 +1,42 @@
+version: '3'
+
+vars:
+  PYPROJECT_PATH: pyproject.toml
+  REQUIREMENTS_PATH: requirements/requirements.txt
+  REQUIREMENTS_DEV_PATH: requirements/requirements_dev.txt
+
+tasks:
+  install-pip-tools:
+    desc: Install pip-tools
+    cmds:
+      - python -m pip install pip-tools
+      - pip install pip-audit
+      - pip-compile --version
+      - pip-sync --version
+      - pip-audit --version
+
+  compile-requirements:
+    desc: Generates requirements files based on pyproject.toml.
+    cmds:
+      - pip-compile --extra dev -o {{.REQUIREMENTS_DEV_PATH}} {{.PYPROJECT_PATH}} --verbose
+      - pip-compile -o {{.REQUIREMENTS_PATH}} --verbose  -c {{.REQUIREMENTS_DEV_PATH}} {{.PYPROJECT_PATH}}
+
+  audit-requirements:
+      desc: use pip-audit to check for vulnerabilities in the requirements/requirements.txt
+      cmds:
+        - pip-audit -r {{.REQUIREMENTS_DEV_PATH}} --fix --dry-run 
+  
+  sync-requirements:
+    desc: Syncs requirements to your local env.
+    preconditions:
+      - test -f {{.REQUIREMENTS_DEV_PATH}}
+    cmds:
+      - pip-sync {{.REQUIREMENTS_DEV_PATH}}
+
+  prepare-local-env:
+    desc: Prepares your local env with the required packages.
+    cmds:
+      - task: install-pip-tools
+      - task: compile-requirements
+      - task: sync-requirements
+      - pre-commit install --install-hooks -t pre-push

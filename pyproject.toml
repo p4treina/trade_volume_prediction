@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=61", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "volume_prediction"
+description = "Application to predict global markets trading volumes"
+readme = "README.md"
+dynamic = ["version"]
+requires-python = ">=3.11"
+dependencies = [
+    "gradio",
+    "matplotlib",
+    "pandas",
+    "statsmodels",
+    "scikit-learn",
+    "xgboost",
+    "catboost",
+    "numpy",
+    "numba",
+    "shap",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "pip-audit",
+    "setuptools_scm",
+    "pre-commit",
+]
+
+[tool.setuptools.packages.find]
+exclude = ["docs", "tests*", "env*"]
+include = ["src"]
+
+[tool.setuptools_scm]
+version_file = "_version.py"
+
+[tool.pip-tools]
+generate-hashes = false
+
+[tool.pytest.ini_options]
+junit_family = "xunit1"
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths =["tests"]
+
+[tool.ruff.lint]
+ignore = ["E712"]
+
+[tool.isort]
+profile = "black"
+line-length = 80

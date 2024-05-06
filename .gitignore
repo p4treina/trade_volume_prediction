@@ -1,0 +1,24 @@
+# venv
+venv
+
+# env
+.env
+
+# version
+_version.py
+
+# vscode
+.vscode/
+
+# DS store
+.DS_Store
+
+
+# Distribution/ packaging
+*egg-info/
+*.egg
+.installed.cfg
+eggs/
+.eggs/
+dist/
+develop-eggs/
