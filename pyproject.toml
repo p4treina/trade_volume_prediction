@@ -51,4 +51,3 @@ ignore = ["E712"]
 
 [tool.isort]
 profile = "black"
-line-length = 80

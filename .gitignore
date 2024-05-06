@@ -22,3 +22,8 @@ eggs/
 .eggs/
 dist/
 develop-eggs/
+
+
+# pytest
+.pytest_cache/
+tests/__pycache__
