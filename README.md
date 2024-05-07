@@ -47,18 +47,18 @@ TODO: Give a short introduction of your project. Let this section explain the ob
 
     If you are **NOT** using Taskfile then run these commands to compile the requirements:
     ```
-    pip-compile --extra test -o requirements/requirements_test.txt pyproject.toml --verbose
-    pip-compile -o requirements/requirements.txt --verbose  -c requirements/requirements_test.txt pyproject.toml
+    pip-compile --extra dev -o requirements/requirements_dev.txt pyproject.toml --verbose
+    pip-compile -o requirements/requirements.txt --verbose  -c requirements/requirements_dev.txt pyproject.toml
     ```
 
     Audit the dependencies (OPTIONAL)
     ```
-    pip-audit -r requirements/requirements_test.txt --fix --dry-run 
+    pip-audit -r requirements/requirements_dev.txt --fix --dry-run 
     ```
 
     Sync the requirements to your virtual environment. It will install them and delete anything not listed in the requirements file
     ```
-    pip-sync requirements/requirements_test.txt
+    pip-sync requirements/requirements_dev.txt
     ```
 
     There should be a file in the root folder named hash.txt, it shuld contain the most recent hash of the pyproject.toml. If it is not there, create it and then run the following command to add the hash to it.
