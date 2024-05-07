@@ -23,6 +23,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+    "seaborn",
     "ipykernel",
     "pytest",
     "pytest-cov",
