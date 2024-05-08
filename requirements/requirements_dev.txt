@@ -349,6 +349,7 @@ scipy==1.13.0
     #   scikit-learn
     #   shap
     #   statsmodels
+    #   volume_prediction (pyproject.toml)
     #   xgboost
 seaborn==0.13.2
     # via volume_prediction (pyproject.toml)

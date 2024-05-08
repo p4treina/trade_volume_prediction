@@ -331,6 +331,7 @@ scipy==1.13.0
     #   scikit-learn
     #   shap
     #   statsmodels
+    #   volume_prediction (pyproject.toml)
     #   xgboost
 semantic-version==2.10.0
     # via

@@ -10,6 +10,7 @@ dynamic = ["version"]
 requires-python = ">=3.10"
 dependencies = [
     "gradio",
+    "scipy",
     "matplotlib",
     "pandas",
     "statsmodels",
