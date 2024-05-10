@@ -27,3 +27,7 @@ develop-eggs/
 # pytest
 .pytest_cache/
 tests/__pycache__
+
+
+# Catboost
+notebooks/catboost_info/*
