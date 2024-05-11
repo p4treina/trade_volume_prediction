@@ -19,8 +19,8 @@ class DataTransformer():
 
     @staticmethod
     def add_lags(
-            df:pd.DataFrame, 
-            cols: List[str], 
+            df:pd.DataFrame,
+            cols: List[str],
             periods: List[int] = [1, 2, 3]
         ) -> tuple[pd.DataFrame, List]:
         lags_columns = []
@@ -43,7 +43,7 @@ class DataTransformer():
     def add_target_rolling_mean(df: pd.DataFrame, target_column) -> pd.DataFrame:
         df['rolling_mean'] = df[target_column].rolling(window=3).mean()
         return df
-    
+
 
     def transform(self):
         pass

@@ -21,7 +21,7 @@ class DataExtractor():
         assert target in self.TARGETS, f"Invaid target: {target}"
         # rename columns to lower case
         df.columns = map(str.lower, df.columns)
-        # Add _target to columns 
+        # Add _target to columns
         if self.target == "gm":
             index = "business date"
         else:
@@ -31,10 +31,9 @@ class DataExtractor():
         # Remove space from column names
         df.columns = df.columns.str.replace(" ", "_")
         return df
-    
+
     def extract_data(self) -> pd.DataFrame:
         df = self.load_data()
         df = self.rename_columns(df, self.target)
         df.set_index("date")
         return df
-
