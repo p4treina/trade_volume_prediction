@@ -30,4 +30,4 @@ tests/__pycache__
 
 
 # Catboost
-notebooks/catboost_info/*
+notebooks/catboost_info

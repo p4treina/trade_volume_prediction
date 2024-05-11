@@ -18,7 +18,7 @@ class DataExtractor():
         return pd.read_csv(f"{root}/{self.path}")
 
     def rename_columns(self, df: pd.DataFrame, target) -> pd.DataFrame:
-        assert target in self.TARGETS, f"Invaid target: {target}"
+        assert target in self.TARGETS, f"Invalid target: {target}"
         # rename columns to lower case
         df.columns = map(str.lower, df.columns)
         # Add _target to columns
