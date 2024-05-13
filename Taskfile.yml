@@ -40,3 +40,8 @@ tasks:
       - task: compile-requirements
       - task: sync-requirements
       - pre-commit install --install-hooks -t pre-push
+
+  run_demo:
+    desc: Launch gradio demo
+    cmds:
+      - python src/app.py

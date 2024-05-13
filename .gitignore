@@ -27,3 +27,16 @@ develop-eggs/
 # pytest
 .pytest_cache/
 tests/__pycache__
+
+# pychache
+src/__pycache__
+src/etl/__pycache__
+src/model/__pycache__/
+
+
+# Catboost
+notebooks/catboost_info
+
+# Hooks
+.ruff_cache
+.mypy_cache

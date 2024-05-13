@@ -7,9 +7,10 @@ name = "volume_prediction"
 description = "Application to predict global markets trading volumes"
 readme = "README.md"
 dynamic = ["version"]
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 dependencies = [
     "gradio",
+    "scipy",
     "matplotlib",
     "pandas",
     "statsmodels",
@@ -23,6 +24,8 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+    "seaborn",
+    "ipykernel",
     "pytest",
     "pytest-cov",
     "pip-audit",
