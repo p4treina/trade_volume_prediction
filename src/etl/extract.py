@@ -22,10 +22,10 @@ class DataExtractor():
         # Remove space from column names
         df.columns = df.columns.str.replace(" ", "_")
         return df
-    
+
     @staticmethod
     def remove_constant_period(df: pd.DataFrame, date_begin: str ="4/1/2023", date_end: str ="5/29/2023") -> pd.DataFrame:
-        left_index: int =list(df.index).index(date_begin) 
+        left_index: int =list(df.index).index(date_begin)
         right_index: int = list(df.index).index(date_end) + 1
         df = df.drop(df.index[left_index:right_index])
         return df

@@ -51,7 +51,7 @@ class VolumeForecastModel():
     @property
     def model(self):
         return self._model
-    
+
 
     @model.setter
     def model(self, path: str):
@@ -64,7 +64,7 @@ class VolumeForecastModel():
             OSError: Raised when the path is incorrect
         """
         try:
-            with open(path, 'rb') as file:  
+            with open(path, 'rb') as file:
                 self._model: Pipeline = pickle.load(file)
         except OSError:
             raise OSError(self.WRONG_MODEL_PATH + f" {path}")
@@ -117,7 +117,7 @@ class VolumeForecastModel():
             raise ModelIsNone(self.MODEL_NONE_ERROR_MSG)
         predictions = self._model.predict(x)
         return predictions
-    
+
 
     def evaluate(self, x: pd.DataFrame, y: pd.DataFrame) -> Dict:
         """_summary_
