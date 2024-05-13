@@ -1,6 +1,6 @@
 import pickle
 
-from src.config import (
+from config import (
     FEATURES,
     MODEL_NAME,
     MODELS_PATH,
@@ -8,10 +8,10 @@ from src.config import (
     ROOT_DIR,
     VOLUME_DATA_PATH,
 )
-from src.etl.extract import DataExtractor
-from src.etl.transform import DataTransformer
-from src.model.model import VolumeForecastModel
-from src.utils import get_mean_std, get_model_path, get_train_test_indexes
+from etl.extract import DataExtractor
+from etl.transform import DataTransformer
+from model.model import VolumeForecastModel
+from utils import get_mean_std, get_model_path, get_train_test_indexes
 
 if __name__ == "__main__":
     # Load Data
@@ -35,7 +35,6 @@ if __name__ == "__main__":
     test_df = transformer.transform(test_df, means, stds)
 
     # Train
-
     X_train = train_df[FEATURES]
     y_train = train_df[["target"]]
     X_test = test_df[FEATURES]

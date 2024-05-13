@@ -2,7 +2,7 @@ from typing import List
 
 import pandas as pd
 
-from src.utils import day_of_month, day_of_week, get_month
+from utils import day_of_month, day_of_week, get_month
 
 
 class DataTransformer:
@@ -44,7 +44,7 @@ class DataTransformer:
     def transform(self, df: pd.DataFrame, means, stds) -> pd.DataFrame:
         # Remove null values with interpolation
         cols = ["volume_gm"]
-        df = df.interpolate()
+        # df = df.interpolate()
         # Cap outliers
         df = self.cap_outliers(df, cols, means, stds)
         # Add rolling mean value

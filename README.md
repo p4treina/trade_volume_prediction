@@ -1,7 +1,9 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.
+App to forecast and analyse the 
+the volumes that goes through Global
+Markets systems.
 
-# Getting Started
+# Setup
 1.	Installation process.
     #### Create and activate a python virtual env:
 
@@ -83,6 +85,7 @@ TODO: Give a short introduction of your project. Let this section explain the ob
     ```
     After verifying pre-commit is installed, please run the followng command to install further hooks.
     ```
+    pe-commmit install
     pre-commit install --install-hooks -t pre-push
     ```
 
@@ -90,19 +93,3 @@ TODO: Give a short introduction of your project. Let this section explain the ob
 
     **IMPORTANT!**: Run commands [1-4] everytime you modify the dependencies list in pyproject.toml
 
-
-# Push code to remote repo
-It is recommended that you push after multiple commits (if multiple commits are necessary) instead of pushing afetr every commit. A ```.pre-commit-config.yaml``` file is configured to run several code quality checks and fixes (although it wont fix everything) before you commit or push your code. It will also run pytest over your tests folder to make sure your unit tests are successful.
-
-# Check code coverage
-
-```
-pytest --cov=pb_customer_journey_investments  tests/
-```
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)

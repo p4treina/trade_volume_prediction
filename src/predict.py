@@ -1,14 +1,8 @@
-from src.config import (
-    FEATURES,
-    MODEL_NAME,
-    MODELS_PATH,
-    ROOT_DIR,
-    VOLUME_DATA_PATH,
-)
-from src.etl.extract import DataExtractor
-from src.etl.transform import DataTransformer
-from src.model.model import VolumeForecastModel
-from src.utils import get_mean_std, get_model_path, get_train_test_indexes
+from config import FEATURES, MODEL_NAME, MODELS_PATH, ROOT_DIR, VOLUME_DATA_PATH
+from etl.extract import DataExtractor
+from etl.transform import DataTransformer
+from model.model import VolumeForecastModel
+from utils import get_mean_std, get_model_path, get_train_test_indexes
 
 if __name__ == "__main__":
     # Load data
@@ -21,7 +15,8 @@ if __name__ == "__main__":
     volume_df = transformer.add_target(volume_df, "volume_gm")
 
     # Transform
-    train_indexes, test_indexes = get_train_test_indexes(volume_df, test_size=0.2)
+    # TODO: change this to have a fix value to account new records
+    train_indexes, _ = get_train_test_indexes(volume_df, test_size=0.2)
     means, stds = get_mean_std(volume_df.loc[train_indexes])
     volume_df = transformer.transform(volume_df, means, stds)
 
@@ -33,4 +28,4 @@ if __name__ == "__main__":
 
     # Predict
     input_df = volume_df[FEATURES].iloc[-1:]
-    volume_forecaster.predict(input_df)
+    print(volume_forecaster.predict(input_df)[0])

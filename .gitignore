@@ -36,3 +36,7 @@ src/model/__pycache__/
 
 # Catboost
 notebooks/catboost_info
+
+# Hooks
+.ruff_cache
+.mypy_cache
