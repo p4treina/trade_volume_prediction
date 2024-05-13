@@ -1,14 +1,15 @@
-import pandas as pd
 from typing import List
-from src.utils import get_month, day_of_week, day_of_month
+
+import pandas as pd
+
+from src.utils import day_of_month, day_of_week, get_month
 
 
-class DataTransformer():
+class DataTransformer:
     @staticmethod
-    def add_target(df: pd.DataFrame, column:str = "volume_gm" ) -> pd.DataFrame:
+    def add_target(df: pd.DataFrame, column: str = "volume_gm") -> pd.DataFrame:
         df["target"] = df[column].shift(-1)
         return df
-
 
     @staticmethod
     def add_temporal_features(df: pd.DataFrame) -> pd.DataFrame:
@@ -17,21 +18,15 @@ class DataTransformer():
         df["month"] = list(map(get_month, df.index.tolist()))
         return df
 
-
     @staticmethod
     def add_lags(
-            df:pd.DataFrame,
-            cols: List[str],
-            periods: List[int] = [1, 2, 3]
-        ) -> tuple[pd.DataFrame, List]:
-        lags_columns = []
+        df: pd.DataFrame, cols: List[str], periods: List[int] = [1, 2, 3]
+    ) -> tuple[pd.DataFrame, List]:
         for col in cols:
             for lag in periods:
                 feature_col_name = f"{col}_lag_{lag}"
                 df[feature_col_name] = df.shift(lag)[col]
-                lags_columns.append(feature_col_name)
-        return df, lags_columns
-
+        return df
 
     @staticmethod
     def cap_outliers(df: pd.DataFrame, columns, means, stds, std_num=4):
@@ -41,18 +36,16 @@ class DataTransformer():
             df[column] = df[column].clip(lower=down_border, upper=up_border)
         return df
 
-
     @staticmethod
     def add_target_rolling_mean(df: pd.DataFrame, target_column) -> pd.DataFrame:
-        df['rolling_mean'] = df[target_column].rolling(window=3).mean()
+        df["rolling_mean"] = df[target_column].rolling(window=3).mean()
         return df
 
-
-    def transform(self, df:pd.DataFrame, means, stds) -> pd.DataFrame:
-        # Add target column
-        df = self.add_target(df)
-        # Cap outliers
+    def transform(self, df: pd.DataFrame, means, stds) -> pd.DataFrame:
+        # Remove null values with interpolation
         cols = ["volume_gm"]
+        df = df.interpolate()
+        # Cap outliers
         df = self.cap_outliers(df, cols, means, stds)
         # Add rolling mean value
         df = self.add_target_rolling_mean(df, "target")

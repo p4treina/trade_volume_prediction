@@ -81,10 +81,10 @@ class VolumeForecastModel(Model):
 
     def __init__(
         self,
-        learning_rate: float | None,
-        max_depth: int | None,
-        subsample: float | None,
-        random_state: int | None,
+        learning_rate: float | None = None,
+        max_depth: int | None = None,
+        subsample: float | None = None,
+        random_state: int | None = None,
     ) -> None:
         super().__init__()
         if (
@@ -174,7 +174,7 @@ class VolumeForecastModel(Model):
         Returns:
             Dict: dictionary with evaluation metrics
         """
-        preds, _ = self.predict(x)
+        preds = self.predict(x)
         metrics_dict: Dict = defaultdict()
         metrics_dict["MAE"] = mean_absolute_error(y, preds)
         metrics_dict["RMSE"] = root_mean_squared_error(y, preds)

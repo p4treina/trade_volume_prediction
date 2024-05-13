@@ -1,6 +1,8 @@
-import pandas as pd
+import os
 from datetime import datetime
 from typing import List
+
+import pandas as pd
 
 
 def join_dfs(df_list: List, mode="left") -> pd.DataFrame:
@@ -11,7 +13,7 @@ def join_dfs(df_list: List, mode="left") -> pd.DataFrame:
     return pdf
 
 
-def day_of_week(date_str: str, pattern: str ="%m/%d/%Y") -> int:
+def day_of_week(date_str: str, pattern: str = "%m/%d/%Y") -> int:
     date_obj = datetime.strptime(date_str, pattern)
     return date_obj.weekday()  # 0 for Monday, 1 for Tuesday, ..., 6 for Sunday
 
@@ -38,3 +40,17 @@ def get_mean_std(df: pd.DataFrame) -> tuple[pd.Series, pd.Series]:
     means = df.mean(numeric_only=True)
     stds = df.std(numeric_only=True)
     return means, stds
+
+
+def get_model_path(model_name: str, models_path: str) -> tuple[str, int]:
+    models = [
+        file[:-4]
+        for file in os.listdir(models_path)
+        if file.endswith(".pkl") and file.startswith(f"{model_name}_")
+    ]
+    if len(models) > 0:
+        latest_version = max([int(model.split("_v")[-1]) for model in models])
+        model_path = f"{models_path}/{model_name}_v{latest_version + 1}.pkl"
+    else:
+        model_path = f"{models_path}/{model_name}_v1.pkl"
+    return model_path, latest_version
