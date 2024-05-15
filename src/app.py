@@ -47,7 +47,7 @@ def get_forecast(date):
     return forecast
 
 
-def modelled_data():
+def modeled_data():
     volume_df = get_data()
     volume_df = volume_df.iloc[:-1]
 
@@ -76,15 +76,15 @@ if __name__ == "__main__":
                 with gr.Row():
                     date = gr.Dropdown(
                         ["2/16/2021", "2/15/2021", "2/12/2021", "2/11/2021"],
-                        label="Date",
+                        label="Date [t]",
                     )
                 with gr.Row():
                     forecast = gr.Button("Forecast")
                 with gr.Row():
-                    output = gr.Textbox(type="text", lines=1, label="Forecast")
+                    output = gr.Textbox(type="text", lines=1, label="Forecast [t + 1]")
             with gr.Column(scale=3, variant="panel"):
                 gr.Label("Traded Volumes", label="", scale=0.1)
-                gr.Plot(modelled_data)
+                gr.Plot(modeled_data)
         forecast.click(
             get_forecast,
             inputs=date,
