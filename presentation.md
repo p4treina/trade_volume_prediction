@@ -8,18 +8,18 @@ paginate: true
 <!-- _class: lead -->
 
 # Global Markets Volume Forecast
-Patricia Alejandra
+Patricia Alejandra Pacheco Reina
 
 ---
 
 ## The problem:
 The Global Markets Management Team (MT) wants you to forecast the volumes that goes through Global Markets systems.
 
-**The Global Markets MT is interested in a prediction of the volume of the next day (t+1).**
+*The Global Markets MT is interested in a prediction of the volume of the next day (t+1).*
 
 
 
-## The assignment:
+### The assignment:
 Develop a working prototype of a model that predicts these t+1 volumes.
 
 
@@ -38,7 +38,7 @@ ___
 
 ### 1. Research results
 - Treat it as a (uni/multi)variate time series forecast problem,
-    - Stationarity is prefered
+    - Stationarity is preferred
 - Use traditional supervised ML
 - LSTM*
 
@@ -150,3 +150,4 @@ R2: 0.9382964501157846
 
 ---
 ### Deployment recommendation
+https://excalidraw.com/#json=CtnW9sV-w4XtmqpuuD1z0,CdP5B-U2rOGsrfMElM1Ncw
