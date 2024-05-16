@@ -31,7 +31,7 @@ ___
 3. 👩🏾‍💻 Create baseline model
 4. 👩🏾‍💻 Experiment with different modeling and feature engineering techniques.
 5. 🆚 Evaluate againts baseline model.
-4. 😉 Deploy winner 
+4. 🏆 Deploy winner 
 5. 📈 Demo
 
 ---
