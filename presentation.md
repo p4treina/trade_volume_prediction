@@ -40,6 +40,7 @@ ___
 - Treat it as a (uni/multi)variate time series forecast problem,
     - Stationarity is preferred
 - Use traditional supervised ML
+    - Gradient Boosting algorithms have proven to be very effective.
 - LSTM*
 
 ### Conclusions
@@ -61,7 +62,7 @@ ___
 
 - EUR-USD exchange rate does not vary that much over time.
 - VIX and GM volme have a similar distribution.
-- Temporal features (day of the week, day of the month, month) seem not to influence volumes.
+- Temporal features (day of the week, day of the month, month) do not have a big influence in volumes.
 - Most trade happens when VIX is small (ties to VIX definition)
 
 ```
